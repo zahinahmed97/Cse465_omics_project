@@ -4,3 +4,6 @@
 [submodule "Data/prokka"]
 	path = Data/prokka
 	url = https://github.com/tseemann/prokka.git
+[submodule "Data/Roary"]
+	path = Data/Roary
+	url = https://github.com/sanger-pathogens/Roary.git
