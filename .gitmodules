@@ -1,0 +1,6 @@
+[submodule "Data/velvet"]
+	path = Data/velvet
+	url = https://github.com/dzerbino/velvet.git
+[submodule "Data/prokka"]
+	path = Data/prokka
+	url = https://github.com/tseemann/prokka.git
