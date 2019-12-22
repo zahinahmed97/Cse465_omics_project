@@ -14,6 +14,9 @@ from sklearn.metrics import confusion_matrix
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import scale
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import binarize
+
 
 feature_inp=pd.DataFrame()
 
@@ -40,6 +43,8 @@ logreg.fit(X_train,y_train)
 
 y_pred=logreg.predict(X_test)
 conf=confusion_matrix(y_test,y_pred , sample_weight=None)
+
+print (conf)
 labels = unique_labels(y_test, y_pred)
 res_conf=conf.ravel().tolist()
 
@@ -52,15 +57,15 @@ logreg.predict(X_test)[0:10]
 logreg.predict_proba(X_test)[0:10, :]
 logreg.predict_proba(X_test)[0:10,1]
 y_pred_prob= logreg.predict_proba(X_test)[:,1]
-import matplotlib.pyplot as plt
 
-plt.hist(y_pred_prob, bins=0)
+
+plt.hist(y_pred_prob, bins=8)
 plt.xlim(0,1)
 plt.title('Histogram of predicted probabilities')
 plt.xlabel('predicted probability of resistance')
 plt.ylabel('frequency')
 
-from sklearn.preprocessing import binarize
+
 y_pred_class= binarize([y_pred_prob], 0.3)[0]
 
 print(confusion_matrix(y_test, y_pred_class))
