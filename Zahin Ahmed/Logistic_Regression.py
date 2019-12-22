@@ -21,7 +21,8 @@ print("Reading input file")
 feature_inp= pd.read_csv("C:\\Users\\Zahin Ahmed\\Desktop\\CSE465_omics_project\\Data\\curated_input_GYS.csv",index_col=0)
 print("input file is imported")
 
-print(list(range(1,feature_inp.shape[1])))
+print("No. of features:")
+range(1,feature_inp.shape[1])
 
 feature_inp=feature_inp.dropna()
  
@@ -40,14 +41,11 @@ logreg.fit(X_train,y_train)
 y_pred=logreg.predict(X_test)
 conf=confusion_matrix(y_test,y_pred , sample_weight=None)
 labels = unique_labels(y_test, y_pred)
-inp= precision_recall_fscore_support(y_test, y_pred, labels=labels, average=None)
 res_conf=conf.ravel().tolist()
-res_inp=np.asarray(inp).ravel().tolist()
-y_test=np.asfarray(y_test,float)
-y_train=np.asfarray(y_train,float)
 
-report=res_conf+res_inp
-report=pd.DataFrame(report, index = ['TN','FP','FN','TP','PRC_S','PRC_R','RCL_S','RCL_R','FSc_S','FSc_R','Sc_S','Sc_R'])
+
+
+report=pd.DataFrame(res_conf, index = ['TN','FP','FN','TP'])
 report.to_csv("C:\\Users\\Zahin Ahmed\\Desktop\\CSE465_omics_project\\Zahin Ahmed\\report_LR", sep='\t')
 
 print(logreg)
