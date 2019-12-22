@@ -7,7 +7,6 @@ Created on Thu Dec 19 17:39:35 2019
 
 import numpy as np
 import pandas as pd
-import os
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_recall_fscore_support
